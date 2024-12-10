@@ -32,7 +32,7 @@ const ProjectType = new GraphQLObjectType({
 const ClientType = new GraphQLObjectType({
     name: 'Client',
     fields: () => ({
-        _id: { type: GraphQLID },
+        id: { type: GraphQLID },
         name: { type: GraphQLString },
         email: { type: GraphQLString },
         phone: { type: GraphQLString },
