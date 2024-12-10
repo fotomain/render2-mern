@@ -6,6 +6,13 @@ const app = express();
 
 require("dotenv").config();
 
+const colors = require('colors');
+
+// =============================
+// =============================
+// =============================
+
+
 const ALLOWED_ORIGINS=
     'https://foo.example1 ' +
     'http://localhost:3001 ' +
@@ -34,18 +41,18 @@ const connectDB = require("./connectMongo");
 
 connectDB();
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 const BookModel = require("./models/book.model");
-// BookModel.createCollection();
 
-// const redis = require('./redis')
+const schema = require('./grapql_schema/schema');
 
-// const deleteKeys = async (pattern) => {
-//   const keys = await redis.keys(`${pattern}::*`)
-//   console.log(keys)
-//   if (keys.length > 0) {
-//     redis.del(keys)
-//   }
-// }
+app.post('/schema_settings', (req, res,next) => {
+  console.log('=== post schema_settings  ')
+  res.json({schema});
+});
+
 
 app.get("/api/v1/books", async (req, res) => {
   const { limit = 5, orderBy = "name", sortBy = "asc", keyword } = req.query;
