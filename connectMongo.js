@@ -9,10 +9,12 @@ const url = process.env.MONGODB_CONNECT_URI || localUri
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(url)
+        const conn = await mongoose.connect(url,{
+            dbName:'bbooks_db1'
+        })
         console.log("Connect to MongoDB successfully",conn)
-        const set1 = mongoose.connection.useDb('bbooks_db1');
-        console.log("Connect to MongoDB set1",set1)
+        // const set1 = mongoose.connection.useDb('bbooks_db1');
+        // console.log("Connect to MongoDB set1",set1)
     } catch (error) {
         console.log("Connect failed " + error.message )
     }
