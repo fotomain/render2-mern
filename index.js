@@ -74,6 +74,7 @@ app.get("/api/v1/books", async (req, res) => {
 
       response = {
         msg: "Ok",
+        create1,
         data,
         totalItems,
         totalPages: Math.ceil(totalItems / limit),
