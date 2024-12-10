@@ -13,7 +13,14 @@ git push -u origin main
 ==============
 npm i
 npm i body-parser
+==============
 
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
+    "express": "^4.18.2",
+    "mongoose": "^6.10.1"
+
+==============
 npm fund
 
 
