@@ -11,6 +11,7 @@ const connectDB = async () => {
     try {
         const conn = await mongoose.connect(url)
         console.log("Connect to MongoDB successfully",conn)
+        mongoose.connection.useDb('bbooks_db1');
     } catch (error) {
         console.log("Connect failed " + error.message )
     }
