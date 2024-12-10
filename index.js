@@ -9,6 +9,7 @@ require("dotenv").config();
 
 const ALLOWED_ORIGINS=
     'https://foo.example1 ' +
+    'http://localhost:3001 ' +
     'http://localhost:3000 ' +
     'http://localhost:8080 '
 
@@ -64,6 +65,7 @@ app.get("/api/v1/books", async (req, res) => {
     if (cache) {
       response = JSON.parse(cache)
     } else {
+      const create1 = await BookModel.create({name:'Book111'})
       const data = await BookModel.find(query)
       .skip(skip)
       .limit(limit)
