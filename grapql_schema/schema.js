@@ -87,6 +87,7 @@ const mutation = new GraphQLObjectType({
             },
             resolve(parent, args) {
                 const client = new ClientsCollection({
+                    id: Date.now(),
                     name: args.name,
                     email: args.email,
                     phone: args.phone,
