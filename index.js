@@ -74,6 +74,7 @@ app.get("/api/v1/books", async (req, res) => {
 
       response = {
         msg: "Ok",
+        apiname: "create1",
         create1,
         data,
         totalItems,
@@ -100,6 +101,7 @@ app.get("/api/v1/books/:id", async (req, res) => {
     if (data) {
       return res.status(200).json({
         msg: "Ok",
+        apiname: "findById",
         data,
       });
     }
@@ -127,6 +129,7 @@ app.post("/api/v1/books", async (req, res) => {
     // deleteKeys('Book')
     return res.status(200).json({
       msg: "Ok",
+      apiname: "save",
       data,
     });
   } catch (error) {
