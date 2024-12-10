@@ -54,12 +54,12 @@ app.use(
     '/graphql',
     graphqlHTTP({
       schema,
-      graphiql: true,
-      // graphiql: process.env.NODE_ENV === 'development',
+      // graphiql: true,
+      graphiql: process.env.NODE_ENV === 'development',
     })
 );
 
-app.post('/schema_settings', (req, res,next) => {
+app.post('/api/v1/schema_settings', (req, res,next) => {
   console.log('=== post schema_settings  ')
   res.json({schema});
 });
