@@ -14,7 +14,7 @@ const colors = require('colors');
 
 
 const ALLOWED_ORIGINS=
-    'https://foo.example1 ' +
+    'https://render2-client.netlify.app ' +
     'http://localhost:3001 ' +
     'http://localhost:3000 ' +
     'http://localhost:8080 '
@@ -55,7 +55,7 @@ const schema = require('./grapql_schema/schema');
 const { graphqlHTTP } = require('express-graphql');
 
 app.use(
-    '/graphql',
+    '/api/v1/graphql',
     graphqlHTTP({
       schema,
       // graphiql: true,
