@@ -6,7 +6,6 @@ const app = express();
 
 require("dotenv").config();
 
-
 const ALLOWED_ORIGINS=
     'https://foo.example1 ' +
     'http://localhost:3001 ' +
@@ -36,6 +35,8 @@ const connectDB = require("./connectMongo");
 connectDB();
 
 const BookModel = require("./models/book.model");
+BookModel.createCollection();
+
 // const redis = require('./redis')
 
 // const deleteKeys = async (pattern) => {

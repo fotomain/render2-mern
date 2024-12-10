@@ -9,8 +9,8 @@ const url = process.env.MONGODB_CONNECT_URI || localUri
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(url)
-        console.log("Connect to MongoDB successfully")
+        const conn = await mongoose.connect(url)
+        console.log("Connect to MongoDB successfully",conn)
     } catch (error) {
         console.log("Connect failed " + error.message )
     }
