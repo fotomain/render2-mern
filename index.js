@@ -1,9 +1,32 @@
 
 const express = require("express");
+var cors = require('cors');
 
 const app = express();
 
 require("dotenv").config();
+
+
+const ALLOWED_ORIGINS=
+    'https://foo.example1 ' +
+    'http://localhost:3000 ' +
+    'http://localhost:8080 '
+
+const customCorsOptions = {
+  origin: (origin, callback) => {
+    const allowedOrigins = ALLOWED_ORIGINS.split(" ");
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Request from unauthorized origin"));
+    }
+  },
+};
+
+app.use(cors(
+    customCorsOptions
+));
+
 
 app.use(express.json());
 
