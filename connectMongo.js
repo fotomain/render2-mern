@@ -12,7 +12,7 @@ const connectDB = async () => {
         const conn = await mongoose.connect(url,{
             dbName:'bbooks_db1'
         })
-        console.log("Connect to MongoDB successfully! ",conn)
+        // console.log("Connect to MongoDB successfully! ",conn)
         // const set1 = mongoose.connection.useDb('bbooks_db1');
         // console.log("Connect to MongoDB set1",set1)
     } catch (error) {
