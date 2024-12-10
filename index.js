@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 const app = express();
@@ -11,15 +12,15 @@ const connectDB = require("./connectMongo");
 connectDB();
 
 const BookModel = require("./models/book.model");
-const redis = require('./redis')
+// const redis = require('./redis')
 
-const deleteKeys = async (pattern) => {
-  const keys = await redis.keys(`${pattern}::*`)
-  console.log(keys)
-  if (keys.length > 0) {
-    redis.del(keys)
-  }
-}
+// const deleteKeys = async (pattern) => {
+//   const keys = await redis.keys(`${pattern}::*`)
+//   console.log(keys)
+//   if (keys.length > 0) {
+//     redis.del(keys)
+//   }
+// }
 
 app.get("/api/v1/books", async (req, res) => {
   const { limit = 5, orderBy = "name", sortBy = "asc", keyword } = req.query;
@@ -57,7 +58,7 @@ app.get("/api/v1/books", async (req, res) => {
 
       redis.setex(key, 600, JSON.stringify(response))
     }
-    
+
     return res.status(200).json(response);
   } catch (error) {
     return res.status(500).json({
@@ -97,7 +98,7 @@ app.post("/api/v1/books", async (req, res) => {
       description,
     });
     const data = await book.save();
-    deleteKeys('Book')
+    // deleteKeys('Book')
     return res.status(200).json({
       msg: "Ok",
       data,
@@ -124,7 +125,7 @@ app.put("/api/v1/books/:id", async (req, res) => {
       },
       { new: true }
     );
-    deleteKeys('Book')
+    // deleteKeys('Book')
     return res.status(200).json({
       msg: "Ok",
       data,
@@ -139,7 +140,7 @@ app.put("/api/v1/books/:id", async (req, res) => {
 app.delete("/api/v1/books/:id", async (req, res) => {
   try {
     await BookModel.findByIdAndDelete(req.params.id);
-    deleteKeys('Book')
+    // deleteKeys('Book')
     return res.status(200).json({
       msg: "Ok",
     });
@@ -150,7 +151,7 @@ app.delete("/api/v1/books/:id", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3030;
 
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
