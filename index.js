@@ -48,6 +48,16 @@ const BookModel = require("./models/book.model");
 
 const schema = require('./grapql_schema/schema');
 
+const { graphqlHTTP } = require('express-graphql');
+
+app.use(
+    '/graphql',
+    graphqlHTTP({
+      schema,
+      graphiql: process.env.NODE_ENV === 'development',
+    })
+);
+
 app.post('/schema_settings', (req, res,next) => {
   console.log('=== post schema_settings  ')
   res.json({schema});
