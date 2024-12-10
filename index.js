@@ -118,7 +118,9 @@ app.get("/api/v1/books/:id", async (req, res) => {
 
 app.post("/api/v1/books", async (req, res) => {
   try {
-    const { name, author, price, description } = req.body;
+    var { name, author, price, description } = req.body;
+    if(!name ) name = 'no name'
+    if(!price ) price = 0
     const book = new BookModel({
       name,
       author,
