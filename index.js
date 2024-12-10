@@ -46,6 +46,10 @@ app.use(bodyParser.json());
 
 const BookModel = require("./models/book.model");
 
+// ====================
+// ====================
+// ====================
+
 const schema = require('./grapql_schema/schema');
 
 const { graphqlHTTP } = require('express-graphql');
@@ -63,6 +67,10 @@ app.post('/api/v1/schema_settings', (req, res,next) => {
   console.log('=== post schema_settings  ')
   res.json({schema});
 });
+
+// ====================
+// ====================
+// ====================
 
 
 app.get("/api/v1/books", async (req, res) => {
