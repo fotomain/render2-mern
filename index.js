@@ -35,7 +35,7 @@ const connectDB = require("./connectMongo");
 connectDB();
 
 const BookModel = require("./models/book.model");
-BookModel.createCollection();
+// BookModel.createCollection();
 
 // const redis = require('./redis')
 
