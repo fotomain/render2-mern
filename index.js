@@ -62,7 +62,6 @@ app.use(
       graphiql: process.env.NODE_ENV === 'development',
     })
 );
-
 app.post('/api/v1/schema_settings', (req, res,next) => {
   console.log('=== post schema_settings  ')
   res.json({schema});
