@@ -59,6 +59,7 @@ const RootQuery = new GraphQLObjectType({
         clients: {
             type: new GraphQLList(ClientType),
             resolve(parent, args) {
+                console.log("=== ClientsCollection.find() ",ClientsCollection.find())
                 return ClientsCollection.find();
             },
         },
