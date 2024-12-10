@@ -12,3 +12,7 @@ git push -u origin main
 
 ==============
 npm i
+
+npm fund
+
+
