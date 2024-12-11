@@ -30,10 +30,6 @@ const customCorsOptions = {
   },
 };
 
-app.use(cors(
-    customCorsOptions
-));
-
 
 app.use(express.json());
 
@@ -55,13 +51,19 @@ const schema = require('./grapql_schema/schema');
 const { graphqlHTTP } = require('express-graphql');
 
 app.use(
-    '/api/v1/graphql',
+    '/graphql',
     graphqlHTTP({
       schema,
       graphiql: true,
       // graphiql: process.env.NODE_ENV === 'development',
     })
 );
+
+app.use(cors(
+    customCorsOptions
+));
+
+
 app.post('/api/v1/schema_settings', (req, res,next) => {
   console.log('=== post schema_settings  ')
   res.json({schema});
